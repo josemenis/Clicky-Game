@@ -20,7 +20,10 @@ function FriendCard (props) {
           </li>
         </ul>
       </div>
-      {/* add a click event to remove friend */}
+      {/*
+      4. In the FriendCard component use the prop that holds the `removeFriend`
+      method as a callback for an `onClick` listener on the "remove" span.
+      */}
       <span onClick={() => props.removeFriend(props.id)} className='remove'>
         𝘅
       </span>
