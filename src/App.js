@@ -2,6 +2,7 @@ import React from 'react';
 import FriendCard from './components/FriendCard';
 import Wrapper from './components/Wrapper';
 import friends from './friends.json';
+import Title from "./components/Title";
 import './App.css';
 // Docs: https://reactjs.org/docs/react-component.html
 // 1.1 Refactor the `App` component: so that it's a class component.
@@ -37,7 +38,7 @@ class App extends React.Component {
       // Map over this.state.friends and render a FriendCard component for each friend object
     return (
      <Wrapper>
-      <h1 className='title'>Friends List</h1>
+        <Title>Friends List</Title>
        {this.state.friends.map((friend) => (
          <FriendCard
          
