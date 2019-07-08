@@ -62,7 +62,7 @@ class App extends React.Component {
           */
           removeFriend={this.removeFriend}
            />
-           ))};
+           ))}
            </Wrapper>
            <Footer>
            <h2 className="footer">2019</h2>
