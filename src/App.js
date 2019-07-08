@@ -2,8 +2,10 @@ import React from 'react';
 import FriendCard from './components/FriendCard';
 import Wrapper from './components/Wrapper';
 import friends from './friends.json';
-import Title from "./components/Title";
 import './App.css';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+
 // Docs: https://reactjs.org/docs/react-component.html
 // 1.1 Refactor the `App` component: so that it's a class component.
 /* Converting a Function to a Class:
@@ -37,31 +39,35 @@ class App extends React.Component {
     // use a map to render one `FriendCard` component for each object in the `friends` JSON passing in the appropriate props.
       // Map over this.state.friends and render a FriendCard component for each friend object
     return (
-     <Wrapper>
-        <Title>Friends List</Title>
-       {this.state.friends.map((friend) => (
-         <FriendCard
-         
-        // key is used to set id on the JSX element.
-        //  W/O it you get: "Warning: Each child in a list should have a unique 'key'"
-        key={friend.id}
-        // Below order matches friends.json object.
-         id={friend.id}
-         name={friend.name}
-         image={friend.image}
-         occupation={friend.occupation}
-         location={friend.location}
-         /*
-        3. You'll want to pass this new `removeFriend` 
-        method as a prop into each `FriendCard` component.
-        */
-        removeFriend={this.removeFriend}
+      <div>
 
-         />
-       ))};
-     </Wrapper>
-    )
-  }
+        <Navbar>
+          <h1 className='title'>Click Game</h1>
+        </Navbar>
+        <Wrapper>
+         {this.state.friends.map((friend) => (
+           <FriendCard
+          // key is used to set id on the JSX element.
+          //  W/O it you get: "Warning: Each child in a list should have a unique 'key'"
+          key={friend.id}
+          // Below order matches friends.json object.
+           id={friend.id}
+           name={friend.name}
+           image={friend.image}
+           occupation={friend.occupation}
+           location={friend.location}
+           /*
+          3. You'll want to pass this new `removeFriend` 
+          method as a prop into each `FriendCard` component.
+          */
+          removeFriend={this.removeFriend}
+           />
+           ))};
+           </Wrapper>
+           <Footer />
+      </div>
+      )
+    }
 }
 
 export default App
