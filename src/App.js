@@ -64,7 +64,9 @@ class App extends React.Component {
            />
            ))};
            </Wrapper>
-           <Footer />
+           <Footer>
+           <h2 className="footer">2019</h2>
+           </Footer>
       </div>
       )
     }

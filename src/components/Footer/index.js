@@ -1,12 +1,10 @@
 import React from "react";
 import "./style.css";
 
-function Footer() {
+function Footer(props) {
   return (
-    <footer className="footer">
-      <span>Click Game</span>
-    </footer>
-  );
+    <footer className="footer">{props.children}</footer>
+  )
 }
 
 export default Footer;
