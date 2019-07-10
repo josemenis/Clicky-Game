@@ -2,7 +2,8 @@ import React from 'react'
 import './style.css'
 
 function Card (props) {
-  console.log(props)
+  // console.log("!!!!!!!!!!!!!!!!!!!!1")
+  // console.log(props)
   return (
     <div className='card'>
       <div className='img-container'>

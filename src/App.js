@@ -24,27 +24,35 @@ class App extends React.Component {
   
   restart = () => {
     this.setState({score: 0})
-    this.setState({topScore: 0})
+    // completely reset image so I can click it
+    this.setState({isClicked:''})
+
   }
-  
+  // https://en.wikipedia.org/wiki/Semantics_(computer_science) DON'T GET CAUGHT IN THIS
   //////////////////////////////////////////////////////////
               // = lets arrow function bind this bc ES7
   handleIMGClick = (event) => {
+    console.log("!!!!!!!!!!!!!!!!!!!1")
+    console.log(event.target)
     // logic is to set to fail immediately
     // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset
+    // checks for event then target element checks for dataset then checks if it's clicked
     if (event.target.dataset && event.target.dataset.isClicked) {
       this.setState({score: 0})
       // score is reset after an incorrect # of guesses, then restarted
       this.restart()
     } else {
       // increment and add dataValue= clicked when image is clicked 1st time
-      this.setState({score: this.state.score + 1}) 
+      this.setState({score: this.state.score + 1})
+      this.setState({topScore: this.state.topScore + 1}) 
       // adds dataset set value true
       event.target.dataset.isClicked = true
+      // shuffle pictures everytime image is clicked
     } 
-    //---------------------------------------------
-    // shuffle pictures everytime image is clicked
-    // --------------------------------------------
+    if (this.isClicked = true) {
+      // Math.floor(1 + Math.random() * 16)
+    }
+    console.log(event.target.dataset)
   }
   /////////////////////////////////////////////////////////////
 
@@ -53,7 +61,13 @@ class App extends React.Component {
     return (
       <div>
         <Navbar>
-          <div className='title'>Navbar</div>
+          <div className='title'>
+          Navbar
+          <br/>
+          topScore= {this.state.topScore}
+          <br/>
+          score= {this.state.score}
+          </div>
         </Navbar>
         <Header>
           <div className='title'>Header</div>
