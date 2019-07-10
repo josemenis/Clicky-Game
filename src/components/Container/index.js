@@ -1,8 +1,8 @@
 import React from "react";
 import "./style.css";
 
-function Wrapper(props) {
-  return <div className="wrapper">{props.children}</div>
+function Container(props) {
+  return <div className="container">{props.children}</div>
 }
 
-export default Wrapper;
+export default Container;
