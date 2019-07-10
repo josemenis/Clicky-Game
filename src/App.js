@@ -24,21 +24,24 @@ class App extends React.Component {
   
   restart = () => {
     this.setState({score: 0})
+    //----------------------------------------------
     // completely reset image so I can click it
-    this.setState({isClicked:''})
+    this.setState({isClicked:false})
+    //----------------------------------------------
 
   }
   // https://en.wikipedia.org/wiki/Semantics_(computer_science) DON'T GET CAUGHT IN THIS
   //////////////////////////////////////////////////////////
               // = lets arrow function bind this bc ES7
   handleIMGClick = (event) => {
+    //------------------------------------
     console.log("!!!!!!!!!!!!!!!!!!!1")
     console.log(event.target)
+    //------------------------------------
     // logic is to set to fail immediately
     // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset
     // checks for event then target element checks for dataset then checks if it's clicked
     if (event.target.dataset && event.target.dataset.isClicked) {
-      this.setState({score: 0})
       // score is reset after an incorrect # of guesses, then restarted
       this.restart()
     } else {
@@ -47,14 +50,14 @@ class App extends React.Component {
       this.setState({topScore: this.state.topScore + 1}) 
       // adds dataset set value true
       event.target.dataset.isClicked = true
-      // shuffle pictures everytime image is clicked
     } 
-    if (this.isClicked = true) {
-      // Math.floor(1 + Math.random() * 16)
-    }
-    console.log(event.target.dataset)
+    //---------------------------------------------------
+    // shuffle pictures everytime image is clicked
+    // if (this.event.target.data.isClicked) {
+    //   Math.floor(1 + Math.random() * 16)
+    // }
+    //---------------------------------------------------
   }
-  /////////////////////////////////////////////////////////////
 
   // Only method needed to be defined is React.Component subclass render()
   render () {
