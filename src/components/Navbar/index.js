@@ -6,7 +6,7 @@ import './style.css'
 function Navbar (props) {
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-      <h1 className="title">{props.children}</h1>
+      <h1 className='title'>{props.children}</h1>
     </nav>
   )
 }
