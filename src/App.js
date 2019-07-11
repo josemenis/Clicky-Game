@@ -23,6 +23,7 @@ class App extends React.Component {
   };
   
   restart = () => {
+                          // value is for dataset, trying many things from codeAcademy
     this.setState({score: 0, value: 0})
     //----------------------------------------------
     // trying reset images state so I can click it and increment score after reset
