@@ -23,13 +23,18 @@ class App extends React.Component {
   };
   
   restart = () => {
-    this.setState({score: 0})
+    this.setState({score: 0, value: 0})
     //----------------------------------------------
-    // completely reset image so I can click it
-    this.setState({isClicked:false})
+    // trying reset images state so I can click it and increment score after reset
+    // this.setState({value: null})
     //----------------------------------------------
-
   }
+
+  // ------------------------
+  randomImg = () => {
+    return Math.random()
+  }
+  // -----------------------
   // https://en.wikipedia.org/wiki/Semantics_(computer_science) DON'T GET CAUGHT IN THIS
   //////////////////////////////////////////////////////////
               // = lets arrow function bind this bc ES7
@@ -53,7 +58,7 @@ class App extends React.Component {
     } 
     //---------------------------------------------------
     // shuffle pictures everytime image is clicked
-    // if (this.event.target.data.isClicked) {
+    // if () {
     //   Math.floor(1 + Math.random() * 16)
     // }
     //---------------------------------------------------
