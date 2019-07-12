@@ -27,7 +27,7 @@ class App extends React.Component {
     this.setState({score: 0})
     //----------------------------------------------
     // trying reset images state so I can click it and increment score after reset
-    ({event.target.dataset.isClicked: undefined});
+    // ({event.target.dataset.isClicked: undefined});
     //----------------------------------------------
   }
 
@@ -50,7 +50,7 @@ class App extends React.Component {
     if (event.target.dataset && event.target.dataset.isClicked) {
       // score is reset after an incorrect # of guesses, then restarted
       this.restart()
-      this.element.removeAttribute(isClicked);
+      // this.element.removeAttribute(isClicked);
     } else {
       // increment and add dataValue= clicked when image is clicked 1st time
       this.setState({score: this.state.score + 1})
