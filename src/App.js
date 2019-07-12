@@ -8,13 +8,14 @@ import Footer from './components/Footer';
 import Container from './components/Container';
 
 class App extends React.Component {
-  // state is keeping track of stuff based on Readme.
+  // state is keeping track of stuff based on Readme. So setState only affects state.
   state = {
     // score and topScore in navbar set to 0
     score: 0,
     topScore: 0,
     // images set to array
-    images: []
+    images: [],
+    data: []
   };
 
   componentDidMount() {
@@ -23,25 +24,24 @@ class App extends React.Component {
   };
   
   restart = () => {
-                          // value is for dataset, trying many things from codeAcademy
-    this.setState({score: 0, value: 0})
+    this.setState({score: 0})
     //----------------------------------------------
     // trying reset images state so I can click it and increment score after reset
-    // this.setState({value: null})
+    ({event.target.dataset.isClicked: undefined});
     //----------------------------------------------
   }
 
   // ------------------------
-  randomImg = () => {
-    return Math.random()
-  }
+  // function getRandomImg(i) {
+  //   return Math.floor(Math.random() * Math.floor(i));
+  // }
   // -----------------------
   // https://en.wikipedia.org/wiki/Semantics_(computer_science) DON'T GET CAUGHT IN THIS
   //////////////////////////////////////////////////////////
               // = lets arrow function bind this bc ES7
   handleIMGClick = (event) => {
     //------------------------------------
-    console.log("!!!!!!!!!!!!!!!!!!!1")
+    console.log("!!!!!!ClickImg event.target!!!!!!!")
     console.log(event.target)
     //------------------------------------
     // logic is to set to fail immediately
@@ -50,6 +50,7 @@ class App extends React.Component {
     if (event.target.dataset && event.target.dataset.isClicked) {
       // score is reset after an incorrect # of guesses, then restarted
       this.restart()
+      this.element.removeAttribute(isClicked);
     } else {
       // increment and add dataValue= clicked when image is clicked 1st time
       this.setState({score: this.state.score + 1})
@@ -58,10 +59,7 @@ class App extends React.Component {
       event.target.dataset.isClicked = true
     } 
     //---------------------------------------------------
-    // shuffle pictures everytime image is clicked
-    // if () {
-    //   Math.floor(1 + Math.random() * 16)
-    // }
+    // getRandomImg()
     //---------------------------------------------------
   }
 
