@@ -35,14 +35,15 @@ state = {
   
   // map through data and for each item in the array reset the clicked to false. Make sure to store the
   // full results of the map to a temp variable.
+
+  // -----------------------------------------------------
+  // NOT RESETTING isClicked to FALSE
   let temp= this.state.data.map(eachItem => (
     {...eachItem, isClicked: false}
     ));
 
   console.log('------------ Temp ---------------')
-
-    
-    console.log(temp);
+  console.log(temp);
     
     // reset the state.score to 0.
     // update the state and set data equal to the temp variable shuffled.
@@ -52,13 +53,9 @@ state = {
     })
 
   console.log('------------ after setState ---------------')
-
   console.log(this.state.data)
-
-  
   };
 
-  //
   shuffle = (mydata) => {
     console.log('$$$$$$$$$ shuffle ccalled $$$$$$$$$$$');
     
