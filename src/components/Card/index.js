@@ -8,8 +8,7 @@ function Card (props) {
     <div className='card'>
       <div className='img-container'>
         {/* Make Image clickable for all pictures in card */}
-        <img id={props.id} src={props.image} onClick={props.handleClick}
-        />
+        <img id={props.id} src={props.image} alt={props.id} onClick={props.handleClick} />
       </div>
     </div>
   )
