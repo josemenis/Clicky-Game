@@ -18,7 +18,7 @@ state = {
   };
 
   componentDidMount() {
-    console.log(this.state.data)
+    // console.log(this.state.data)
     // Everytime the component mounts we want to update the state.data object
     // so that state.data is this.state.data shuffled. So it should call your shuffle function
     // this.shuffle(this.state.data);
@@ -54,10 +54,11 @@ state = {
       id={eachItem.id}
       key={eachItem.id}
       image={eachItem.image}
-      handleClick={this.handleItemClick()}
+                  // this Card to use this onClick function
+      handleClick={this.handleItemClick}
       />
       ));
-      console.log(temp)
+      // console.log(temp)
     // https://github.com/lodash/lodash/blob/4ea8c2ec249be046a0f4ae32539d652194caf74f/shuffle.js
      return  _.shuffle(temp)
     
@@ -68,15 +69,37 @@ state = {
     // https://gomakethings.com/how-to-shuffle-an-array-with-vanilla-js/
   };
 
-  handleItemClick = (id) => {
+  handleItemClick = (event) => {
     // you'll want to set up a utility variable called isFirstClick and set it to false
     // You'll create a copy of your state data by mapping through this.state.data
     // for each item create a copy of the object then check to see if that objects id is equal to the
     // id that was passed into the handleClick function. If the ids match, you should check to see if the
     // objects clicked property is false. If it's false then set it to true and also set isFirstClick to true.
     // Remember that you have to return from the map function to have it save into your copy of the data object
-    let isFirstClick = false;
+   let id = event.target.id
+  //  console.log(id)
+  //  console.log(this.state.data[id])
+  console.log(typeof id) // returns string
+  let upDateData = this.state.data.map(element => {
+    console.log(typeof element.id) // retursn number
 
+    if (element.id === parseInt(id) && element.isClicked !== true) {
+      console.log(element.name)
+      
+      return {...element, isClicked: true}
+      // Using spread operator same as return below. 
+      // return {
+      //   "id": element.id,
+      //   "name": element.name,
+      //   "image": element.image,
+      //   "isClicked": true
+      // }
+    }
+    return element
+  })
+  this.setState({data: upDateData})
+
+  console.log(this.state.data)
     // Now we If the image has never been clicked, so
     // * If isFirstClick === true then
     // you want to increment the score and you want to set top score equal to whichever is greater score or current top score
