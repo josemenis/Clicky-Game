@@ -43,7 +43,6 @@ state = {
   console.log(this.state.data)
   };
 
-
   // https://gomakethings.com/how-to-shuffle-an-array-with-vanilla-js/
   shuffle = (array) => {
 
@@ -93,12 +92,7 @@ state = {
             // Math method: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max
             let newTopScore= Math.max(newScore, this.state.topScore)
             this.setState({data: this.shuffle(upDateData), score: newScore, topScore: newTopScore })
-            
-            // var _temp = {...element, isClicked: true}
-    console.log('!!!!!!!!!!!!!!!!!!!!!!111')
-    // console.log(_temp)
-       //      return _temp
-          }
+                      }
           else{
             //gameover
             this.resetGame()
@@ -110,15 +104,15 @@ state = {
       <div>
         <Navbar>
           <div className='title'>
-          Navbar
+          Clicky Game
           <br/>
-          topScore= {this.state.topScore}
+          Top Score= {this.state.topScore}
           <br/>
-          score= {this.state.score}
+          Score= {this.state.score}
           </div>
         </Navbar>
         <Header>
-          <div className='title'>Header</div>
+          <h1 className='title'>Here We Go</h1>
         </Header>
         <Container>
          {this.state.data.map(oneImage => (
@@ -132,7 +126,7 @@ state = {
           ))}
         </Container>
            <Footer>
-           <h2 className="footer">2019</h2>
+           <h2 className="footer">July 2019</h2>
            </Footer>
       </div>
       )
