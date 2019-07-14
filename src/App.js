@@ -104,12 +104,6 @@ state = {
             this.resetGame()
           }
      }
-    //    return element
- //}) // end of map
-
-  //this.setState({data: this.shuffle(upDateData)})
-  // console.log(this.state.data)
-  //};
   
   render () {
     return (
