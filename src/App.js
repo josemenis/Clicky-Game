@@ -6,8 +6,6 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Container from './components/Container';
-import _ from 'lodash';
-
 
 class App extends React.Component {
 
@@ -19,25 +17,16 @@ state = {
 
   componentDidMount() {
     console.log('======= called did mount ======= ');
-    
+
     // console.log(this.state.data)
-    // Everytime the component mounts we want to update the state.data object
-    // so that state.data is this.state.data shuffled. So it should call your shuffle function
-    // this.shuffle(this.state.data);
-    this.resetGame(this.state.data)
+    this.setState({
+      data: this.shuffle(this.state.data)
+    });
   }
             // passing array, this.state.data
   resetGame = (data) => {
-    console.log("reset game")
-  // This function should do the following:
-  console.log(this.state.data)
-  console.log(data)
-  
-  // map through data and for each item in the array reset the clicked to false. Make sure to store the
-  // full results of the map to a temp variable.
+  console.log("reset game")  
 
-  // -----------------------------------------------------
-  // NOT RESETTING isClicked to FALSE
   let temp= this.state.data.map(eachItem => (
     {...eachItem, isClicked: false}
     ));
@@ -45,10 +34,8 @@ state = {
   console.log('------------ Temp ---------------')
   console.log(temp);
     
-    // reset the state.score to 0.
-    // update the state and set data equal to the temp variable shuffled.
     this.setState({
-      data: temp,
+      data: this.shuffle(temp),
       score: 0
     })
 
@@ -56,104 +43,74 @@ state = {
   console.log(this.state.data)
   };
 
-  shuffle = (mydata) => {
-    console.log('$$$$$$$$$ shuffle ccalled $$$$$$$$$$$');
-    
-    let temp= mydata.map(eachItem => (
-      <Card 
-      id={eachItem.id}
-      key={eachItem.id}
-      image={eachItem.image}
-                  // this Card to use this onClick function
-      handleClick={this.handleItemClick}
-      />
-      ));
-      // console.log(temp)
-    // https://github.com/lodash/lodash/blob/4ea8c2ec249be046a0f4ae32539d652194caf74f/shuffle.js
-     return  _.shuffle(temp)
-    
-    // shuffle the data array
-    // personally I would use this function. DO NOT REINVENT THE WHEEL HERE. 
-	  // Just make sure you leave this
-    // link in so we know you grabbed it from somewhere
-    // https://gomakethings.com/how-to-shuffle-an-array-with-vanilla-js/
+
+  // https://gomakethings.com/how-to-shuffle-an-array-with-vanilla-js/
+  shuffle = (array) => {
+
+    var currentIndex = array.length;
+    var temporaryValue, randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+  
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+  
+    return array;
+  
   };
+  
 
   handleItemClick = (event) => {
-    // you'll want to set up a utility variable called isFirstClick and set it to false
     let firstClick = false
-    // You'll create a copy of your state data by mapping through this.state.data
-    // for each item create a copy of the object then check to see if that objects id is equal to the
-    // id that was passed into the handleClick function. If the ids match, you should check to see if the
-    // objects clicked property is false. If it's false then set it to true and also set isFirstClick to true.
-    // Remember that you have to return from the map function to have it save into your copy of the data object
    let id = event.target.id
-  //  console.log(id)
-  //  console.log(this.state.data[id])
-  // console.log(typeof id) // returns string
+
   let upDateData = this.state.data.map(element => {
-    //console.log(typeof element.id) // retursn number
+        let tempImg = {...element}
 
-        if (element.id === parseInt(id)) {
+        if (tempImg.id === parseInt(id)) {
 
-          if(element.isClicked === false){
+          if(!tempImg.isClicked){
             // User got a point
             firstClick = true
+            tempImg.isClicked = true
           }
-          
-          if(firstClick){
-            // update score
-            let newScore= this.state.score + 1
-            let newTopScore= Math.max(newScore, this.state.topScore)
-            this.setState({score: newScore, topScore: newTopScore })
-            
+        }
+        return tempImg
+      });
+          console.log(upDateData);
 
-            return {...element, isClicked: true}
+          if(firstClick === true){
+            // update score
+            
+            let newScore= this.state.score + 1
+            // Math method: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max
+            let newTopScore= Math.max(newScore, this.state.topScore)
+            this.setState({data: this.shuffle(upDateData), score: newScore, topScore: newTopScore })
+            
+            // var _temp = {...element, isClicked: true}
+    console.log('!!!!!!!!!!!!!!!!!!!!!!111')
+    // console.log(_temp)
+       //      return _temp
           }
           else{
             //gameover
             this.resetGame()
           }
+     }
+    //    return element
+ //}) // end of map
 
-        }
-
-        return {...element}
-
-
-    // if (element.id === parseInt(id) && element.isClicked === false) {
-    //   console.log(element.name)
-    //   // increment score & topscore
-    //   // Math.max
-    //   return {...element, isClicked: true}
-    //   // Using spread operator same as return below. 
-    //   // return {
-    //   //   "id": element.id,
-    //   //   "name": element.name,
-    //   //   "image": element.image,
-    //   //   "isClicked": true
-    //   // }
-    // } // end of if
-    // else if (element.id === parseInt(id) && element.isClicked === true) {
-    //   // gameover
-    //   this.resetGame(this.state.data)
-    // } else {
-    //   return {...element}
-    // }
- }) // end of map
-
-  this.setState({data: upDateData})
+  //this.setState({data: this.shuffle(upDateData)})
   // console.log(this.state.data)
-    // Now we If the image has never been clicked, so
-    // * If isFirstClick === true then
-    // you want to increment the score and you want to set top score equal to whichever is greater score or current top score
-    // to do this check out this Math method: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max
-
-    // * If isFirstClick === false then
-    // we wantmto call the resetGame function
+  //};
   
-
-  };
-  // Only method needed to be defined is React.Component subclass render()
   render () {
     return (
       <div>
@@ -170,8 +127,15 @@ state = {
           <div className='title'>Header</div>
         </Header>
         <Container>
-          {/* maps through each image */}
-          {this.shuffle(this.state.data)}
+         {this.state.data.map(oneImage => (
+            // pass properties to Card Component
+            <Card
+            id={oneImage.id}
+            key={oneImage.id}
+            image={oneImage.image}
+            handleClick={this.handleItemClick}
+            />
+          ))}
         </Container>
            <Footer>
            <h2 className="footer">2019</h2>
@@ -182,6 +146,3 @@ state = {
 }
 
 export default App
-
-
-
