@@ -73,10 +73,10 @@ state = {
   let upDateData = this.state.data.map(element => {
         let tempImg = {...element}
 
+                          // returns a string so parsed id
         if (tempImg.id === parseInt(id)) {
 
           if(!tempImg.isClicked){
-            // User got a point
             firstClick = true
             tempImg.isClicked = true
           }
@@ -86,8 +86,7 @@ state = {
           console.log(upDateData);
 
           if(firstClick === true){
-            // update score
-            
+            // User gets a point
             let newScore= this.state.score + 1
             // Math method: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max
             let newTopScore= Math.max(newScore, this.state.topScore)
@@ -134,3 +133,5 @@ state = {
 }
 
 export default App
+
+
