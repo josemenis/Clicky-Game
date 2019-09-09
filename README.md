@@ -1,9 +1,11 @@
-# Clicky Game
+# A Clicky Game
 ***
-# Overview
+# Overview:
+
+## Clicking on an image will shuffle the images. Your score increments every time an image is clicked. If the same image is clicked more than once the game resets.
 ---
-# Clicking on an image will shuffle the images. Your score increments every time and image is clicked. If the same image is clicked more than once the game resets.
----
+# Completed for App below:
+
 ## [x] Create a new React application using [Create React App](https://github.com/facebookincubator/create-react-app).
 
 ## [x] The application should render different images (of your choice) to the screen. Each image should listen for click events.
