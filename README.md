@@ -3,18 +3,22 @@
 # Overview:
 
 ## Clicking on an image will shuffle the images. Your score increments every time an image is clicked. If the same image is clicked more than once the game resets.
+
+[Link to App](https://josemenis.github.io/Clicky-Game/)
 ---
-# Completed for App below:
+# How it works:
 
-## [x] Create a new React application using [Create React App](https://github.com/facebookincubator/create-react-app).
+![default](images/Clicky.PNG)
 
-## [x] The application should render different images (of your choice) to the screen. Each image should listen for click events.
+## The application renders different images (of your choice) to the screen. Each image listens for click events.
 
-## [x] The application should keep track of the user's score. The user's score should be incremented when clicking an image for the first time. The user's score should be reset to 0 if they click the same image more than once.
+![1st click](images/Clicky1stPick.PNG)
 
-## [x] Every time an image is clicked, the images rendered to the page should shuffle themselves in a random order.
+## The application keeps track of the user's score. The user's score is incremented when clicking an image for the first time. The user's score is reset to 0 if they click the same image more than once.
 
-## [x] Once the user's score is reset after an incorrect guess, the game should restart.
+## Every time an image is clicked, the images rendered to the page should shuffle themselves in a random order.
 
-## [x] When complete, the application should be deployed to Github Pages. See the README generated with Create React App for instructions on deploying the application to Github Pages.
+## Once the user's score is reset after an incorrect guess, the game should restart.
+
+![2nd click](images/Clicky2ndPick.PNG)
 
